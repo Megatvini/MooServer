@@ -6,12 +6,13 @@ import org.json.JSONObject;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.StringTokenizer;
 
 public class Farm {
     static final String mainFile = "farm.txt";
     private File farmFile;
-    private int currId = 1;
+    static int currId = 1;
     public Farm() {
         try {
             this.farmFile = Utils.getFileFromResources(mainFile);
@@ -50,6 +51,11 @@ public class Farm {
 
     }
 
+    private static double getRandomNum(double rangeMin, double rangeMax){
+        Random r = new Random();
+        return rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+    }
+
     public JSONArray getCowInfo(int id) throws IOException {
         JSONArray res = new JSONArray();
 
@@ -72,25 +78,32 @@ public class Farm {
             lastLon = Double.parseDouble(lon);
             res.put(obj);
         }
+        System.out.println("curr id: " + currId);
+        if(currId == 2) {
+            System.out.println("updated");
+            try {
 
-        try {
-            long time = System.currentTimeMillis();
-            lastLat += getRandomBoolean() ? 0.01f : -0.01f;
-            lastLon += getRandomBoolean() ? 0.01f : -0.01f;
-            updateCow(id, time, lastLat,lastLon);
-            JSONObject obj = new JSONObject();
-            obj.put("time", time + "");
-            obj.put("lat", "" +lastLat);
-            obj.put("lon", "" + lastLon);
-            res.put(obj);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+                long time = System.currentTimeMillis();
+                lastLat += getRandomNum(-0.01, 0.01);
+                lastLon += getRandomNum(-0.01, 0.01);
+                updateCow(id, time, lastLat,lastLon);
+                JSONObject obj = new JSONObject();
+                obj.put("time", time + "");
+                obj.put("lat", "" +lastLat);
+                obj.put("lon", "" + lastLon);
+                res.put(obj);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
         }
+
         br.close();
         return res;
     }
 
     public JSONArray getCows() throws IOException {
+        currId++;
+
         JSONArray res = new JSONArray();
         ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
         String randomName = "123";;
@@ -110,6 +123,9 @@ public class Farm {
         }
         br.close();
         System.out.println(res.toString());
+        if(currId  == 6) {
+            currId = 0;
+        }
         return res;
     }
 
