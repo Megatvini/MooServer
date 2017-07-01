@@ -3,7 +3,6 @@ package ge.mooserver.services;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -18,18 +17,9 @@ public class Utils {
         return f;
     }
 
-    int pnpoly(int nvert, float *vertx, float *verty, float testx, float testy)
-    {
-        int i, j, c = 0;
-        for (i = 0, j = nvert-1; i < nvert; j = i++) {
 
 
-
-        }
-        return c;
-    }
-
-    boolean pnpoly(List<Coordinat> coordinats, Coordinat cord)
+    boolean pnpoly(List<Coordinate> coordinats, Coordinate cord)
     {
         int i, j = 0;
         boolean c = false;

@@ -1,13 +1,10 @@
 package ge.mooserver.services;
 
-/**
- * Created by gvara on 7/1/2017.
- */
-public class Coordinat {
+public class Coordinate {
     private double lat = 0;
     private double lon = 0;
 
-    public Coordinat(double lat, double lon) {
+    public Coordinate(double lat, double lon) {
         this.lat = lat;
         this.lon = lon;
     }
