@@ -38,6 +38,26 @@ public class Utils {
         return c;
     }
 
+    public static boolean isConvex(List<Coordinate> coordinats)
+    {
+        if (coordinats.size() < 4)
+            return true;
+        boolean sign = false;
+        int n = coordinats.size();
+        for(int i=0; i<n; i++)
+        {
+            double dx1 = coordinats.get((i+2)%n).getLon()-coordinats.get((i+1)%n).getLon();
+            double dy1 = coordinats.get((i+2)%n).getLat()-coordinats.get((i+1)%n).getLat();
+            double dx2 = coordinats.get(i).getLon()-coordinats.get((i+1)%n).getLon();
+            double dy2 = coordinats.get(i).getLat()-coordinats.get((i+1)%n).getLat();
+            double zcrossproduct = dx1*dy2 - dy1*dx2;
+            if (i == 0)
+                sign = zcrossproduct > 0;
+            else if (sign != (zcrossproduct > 0))
+                return false;
+        }
+        return true;
+    }
 
 
 }
