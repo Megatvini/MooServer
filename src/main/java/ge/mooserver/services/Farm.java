@@ -84,8 +84,8 @@ public class Farm {
             try {
 
                 long time = System.currentTimeMillis();
-                lastLat += getRandomNum(-0.01, 0.01);
-                lastLon += getRandomNum(-0.01, 0.01);
+                lastLat += getRandomNum(-0.000001, 0.000001);
+                lastLon += getRandomNum(-0.000001, 0.000001);
                 updateCow(id, time, lastLat,lastLon);
                 JSONObject obj = new JSONObject();
                 obj.put("time", time + "");
