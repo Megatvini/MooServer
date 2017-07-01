@@ -34,6 +34,7 @@ public class Farm {
         PrintWriter writer = new PrintWriter(new FileWriter(farmFile, true));
         writer.println(id + " " + name);
         writer.close();
+        updateCow(id,System.currentTimeMillis(), 41.688064,44.768989);
 
     }
 
@@ -43,11 +44,20 @@ public class Farm {
         writer.close();
     }
 
+    private static boolean getRandomBoolean() {
+        return Math.random() < 0.5;
+        //I tried another approaches here, still the same result
+
+    }
+
     public JSONArray getCowInfo(int id) throws IOException {
         JSONArray res = new JSONArray();
+
         BufferedReader br = new BufferedReader(new FileReader(id+".txt"));
 
         String line = null;
+        double lastLat = 0;
+        double lastLon = 0;
         while ((line = br.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(line);
             st.nextToken();
@@ -58,7 +68,23 @@ public class Farm {
             obj.put("time", time);
             obj.put("lat", lat);
             obj.put("lon", lon);
+            lastLat = Double.parseDouble(lat);
+            lastLon = Double.parseDouble(lon);
             res.put(obj);
+        }
+
+        try {
+            long time = System.currentTimeMillis();
+            lastLat += getRandomBoolean() ? 0.01f : -0.01f;
+            lastLon += getRandomBoolean() ? 0.01f : -0.01f;
+            updateCow(id, time, lastLat,lastLon);
+            JSONObject obj = new JSONObject();
+            obj.put("time", time + "");
+            obj.put("lat", "" +lastLat);
+            obj.put("lon", "" + lastLon);
+            res.put(obj);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         }
         br.close();
         return res;
