@@ -1,7 +1,5 @@
 package ge.mooserver.services;
 
-import org.json.JSONObject;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.IOException;

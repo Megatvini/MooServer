@@ -1,6 +1,5 @@
 package ge.mooserver.services;
 
-import jdk.nashorn.internal.runtime.JSONListAdapter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
