@@ -17,10 +17,7 @@ public class Utils {
         return f;
     }
 
-
-
-    boolean pnpoly(List<Coordinate> coordinats, Coordinate cord)
-    {
+    boolean pnpoly(List<Coordinate> coordinats, Coordinate cord) {
         int i, j = 0;
         boolean c = false;
         double testy = cord.getLat();
@@ -40,4 +37,7 @@ public class Utils {
         }
         return c;
     }
+
+
+
 }
