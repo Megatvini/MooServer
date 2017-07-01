@@ -1,4 +1,4 @@
-import ge.edu.freeuni.android.entertrainment.server.services.PingService;
+import ge.mooserver.services.PingService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;

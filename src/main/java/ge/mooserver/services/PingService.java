@@ -1,4 +1,4 @@
-package ge.edu.freeuni.android.entertrainment.server.services;
+package ge.mooserver.services;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
