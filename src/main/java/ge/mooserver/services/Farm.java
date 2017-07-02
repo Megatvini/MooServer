@@ -86,15 +86,15 @@ public class Farm {
         for (int i = 0; i <arr.size() ; i++) {
             res.put(arr.get(i));
         }
-        
+
         System.out.println("curr id: " + currId);
         if(currId == 2) {
             System.out.println("updated");
             try {
 
                 long time = System.currentTimeMillis();
-                lastLat += getRandomNum(-0.000001, 0.000001);
-                lastLon += getRandomNum(-0.000001, 0.000001);
+                lastLat += getRandomNum(-0.00001, 0.00001);
+                lastLon += getRandomNum(-0.00001, 0.00001);
                 updateCow(id, time, lastLat,lastLon);
                 JSONObject obj = new JSONObject();
                 obj.put("time", time + "");
