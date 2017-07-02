@@ -1,4 +1,4 @@
-1 Lamaso    41.68 44.76
-2 Bondo     40.68 42.76
-3 Fakizo    45.68 46.76
-4 Nebiera   41.02 43.09
+1 Lamaso    39.3
+2 Bondo     39.1
+3 Fakizo    38.8
+4 Nebiera   38.3
