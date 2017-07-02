@@ -58,7 +58,7 @@ public class Farm {
 
     public JSONArray getCowInfo(int id) throws IOException {
         JSONArray res = new JSONArray();
-
+        ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
         BufferedReader br = new BufferedReader(new FileReader(id+".txt"));
 
         String line = null;
@@ -74,10 +74,19 @@ public class Farm {
             obj.put("time", time);
             obj.put("lat", lat);
             obj.put("lon", lon);
+            arr.add(obj);
+            if(arr.size() > 10) {
+                arr.remove(0);
+            }
             lastLat = Double.parseDouble(lat);
             lastLon = Double.parseDouble(lon);
-            res.put(obj);
+
         }
+
+        for (int i = 0; i <arr.size() ; i++) {
+            res.put(arr.get(i));
+        }
+        
         System.out.println("curr id: " + currId);
         if(currId == 2) {
             System.out.println("updated");
