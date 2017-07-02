@@ -33,7 +33,7 @@ public class Farm {
     public void registerCow(String name, int id) throws IOException, URISyntaxException {
         File f =  Utils.getFileFromResources(id+".txt");
         PrintWriter writer = new PrintWriter(new FileWriter(farmFile, true));
-        writer.println(id + " " + name);
+        writer.println(id + " " + name+ " 38.5");
         writer.close();
         updateCow(id,System.currentTimeMillis(), 41.688064,44.768989);
 
@@ -122,10 +122,12 @@ public class Farm {
             StringTokenizer st = new StringTokenizer(line);
             String id = st.nextToken();
             String name = st.nextToken();
+            String temp = st.nextToken();
             JSONObject obj = new JSONObject();
             obj.put("id", id);
             obj.put("name", name);
             obj.put("path", getCowInfo(Integer.parseInt(id)));
+            obj.put("temp", temp);
             arr.add(obj);
 
             res.put(obj);
