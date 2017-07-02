@@ -132,7 +132,7 @@ public class Farm {
         }
         br.close();
         System.out.println(res.toString());
-        if(currId  == 6) {
+        if(currId  == 4) {
             currId = 0;
         }
         return res;
